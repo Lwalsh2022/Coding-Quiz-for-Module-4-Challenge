@@ -7,7 +7,7 @@
 
 ## Inspiration
 
-For README:
+For README: This challenge was to create a coding assessment that is timed. The assessment should deduct time for a wrong answer (I didn't figure that out) and allow you to save the initials for a high score. (Ran out of time)
 
 
 ## Usage
