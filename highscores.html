@@ -1,4 +1,4 @@
-#highscores.html
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Highscores</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="Assets\style.css" />
   </head>
 
   <body>
@@ -16,11 +16,28 @@
       <h1>Highscores</h1>
       <ol id="highscores"></ol>
 
+      highScores.map((score) => `<li>${score.score} — ${score.name}`);
+
       <a href="index.html"><button>Go Back</button></a>
       <button id="clear">Clear Highscores</button>
+
+      const highScoreList = document.getElementById(HIGH_SCORES);
+
+highScoreList.innerHTML = highScores.map((score) => 
+  `<li>${score.score}-${score.name}`
+);
+
+function showHighScores() {
+    const highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
+    const highScoreList = document.getElementById(HIGH_SCORES);
+    
+    highScoreList.innerHTML = highScores
+      .map((score) => `<li>${score.score} - ${score.name}`)
+      .join('');
+  }
     </div>
 
-    <script src="./assets/js/scores.js"></script>
+    <script src="scores.js"></script>
   </body>
 </html>
 

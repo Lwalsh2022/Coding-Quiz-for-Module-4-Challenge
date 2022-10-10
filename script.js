@@ -210,3 +210,39 @@ function queCounter(index){
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
+
+function saveHighscore() {
+    // get value of input box
+    var initials = initialsEl.value.trim();
+
+    // make sure value wasn't empty
+    if (initials !== '') {
+
+        //JSON.parse
+        // get saved scores from localstorage (highscores), or if not any, set to empty array
+        const highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
+        const lowestScore = highScores[NO_OF_HIGH_SCORES-1]?.score ?? 0;
+        if (score > lowestScore) {
+            saveHighScore(score, highScores); // TODO
+            showHighScores(); // TODO
+        }
+        // format new score object for current user
+        
+
+        // save to localstorage
+        
+
+        // redirect to next page
+        window.location.href = 'highscores.html';
+    }
+}
+
+function checkForEnter(event) {
+    // "13" represents the enter key
+    if (event.key === 'Enter') {
+        saveHighscore();
+    }
+}
+
+// user clicks button to submit initials
+submitBtn.onclick = saveHighscore;
